@@ -12,7 +12,7 @@ public class Author {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    private Long authorId;
+    private String authorId;
 
     private String name;
 

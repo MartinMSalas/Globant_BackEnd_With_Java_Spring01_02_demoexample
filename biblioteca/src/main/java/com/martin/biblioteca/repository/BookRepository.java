@@ -9,19 +9,23 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BookRepository extends JpaRepository<Book, Long> {
     // use this method to find a book by title using Jpa naming convention
-    //  Book findBookByTitle(String title);
+    Book findBookByTitle(String title);
+    Book findBookByAuthorName(String name);
 
     // use this method to find a book by title using the query annotation
     // my creation
-    /*
+
     @Query("SELECT b FROM Book b WHERE b.title = ?1")
     Book searchBookByTitle(String title);
 
-     */
+
     // egg creation
     @Query("SELECT b FROM Book b WHERE b.title = :title")
     Book searchBookByTitleEgg(@Param("title") String title);
 
+    @Query("SELECT b FROM Book b WHERE b.author.name = :name")
+    Book searchBookByAuthorNameEgg(@Param("name") String name);
 
 
+    Book findBookByIsbn(Long isbn);
 }
